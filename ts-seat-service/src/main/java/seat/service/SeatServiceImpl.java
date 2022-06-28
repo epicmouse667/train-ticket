@@ -58,6 +58,7 @@ public class SeatServiceImpl implements SeatService {
             //Call the microservice to query all the station information for the train
             HttpEntity requestEntity = new HttpEntity(null);
             re = restTemplate.exchange(
+
                     travel_service_url + "/api/v1/travelservice/routes/" + trainNumber,
                     HttpMethod.GET,
                     requestEntity,

@@ -36,3 +36,12 @@ basic-service:
 
 seat-service:
   url: http://${SEAT_SERVICE_HOST:ts-seat-service}:${SEAT_SERVICE_PORT:18898}
+
+config-service:
+  url: http://${CONFIG_SERVICE_HOST:ts-config-service}:${CONFIG_SERVICE_PORT:15679}
+
+order-other-service:
+  url: http://${ORDER_OTHER_SERVICE_HOST:ts-order-other-service}:${ORDER_OTHER_SERVICE_PORT:12032}
+
+travel2-service:
+  url: http://${TRAVEL2_SERVICE_HOST:ts-travel2-service}:${TRAVEL2_SERVICE_PORT:16346}

@@ -12,6 +12,7 @@
     <name>ts-travel2-service</name>
     <description>ts-travel2-service</description>
 
+
     <parent>
         <groupId>org.services</groupId>
         <artifactId>ts-service</artifactId>
