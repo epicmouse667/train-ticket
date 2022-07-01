@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAsync
 @IntegrationComponentScan
 @EnableSwagger2
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class TravelApplication {
 
     public static void main(String[] args) {
