@@ -36,6 +36,6 @@ public interface TravelService {
 
     Response adminQueryAll(HttpHeaders headers);
 
-    Response getLeftTicketOfInterval(Seat seatRequest, HttpHeaders headers);
+//    Response getLeftTicketOfInterval(Seat seatRequest, HttpHeaders headers);
 
 }
