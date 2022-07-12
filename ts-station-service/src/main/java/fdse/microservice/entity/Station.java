@@ -2,14 +2,17 @@ package fdse.microservice.entity;
 
 import lombok.Data;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
-@Entity
+@Entity(name="station")
 public class Station {
     @Valid
     @NotNull
@@ -20,6 +23,9 @@ public class Station {
     @NotNull
     private String name;
 
+
+    @Column(name="stay_time")
+    @Valid
     private int stayTime;
 
     public Station(){

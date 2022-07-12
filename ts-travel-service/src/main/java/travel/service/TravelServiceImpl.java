@@ -45,8 +45,8 @@ public class TravelServiceImpl implements TravelService {
     String route_service_url;
     @Value("${basic-service.url}")
     String basic_service_url;
-    @Value("${seat-service.url}")
-    String seat_service_url;
+//    @Value("${seat-service.url}")
+//    String seat_service_url;
 
     @Value("${config-service.url}")
     String config_service_url;
@@ -483,15 +483,15 @@ public class TravelServiceImpl implements TravelService {
         TravelServiceImpl.LOGGER.info("[getRestTicketNumber][Seat request][request: {}]", seatRequest.toString());
 
         HttpEntity requestEntity = new HttpEntity(seatRequest, null);
-        ResponseEntity<Response<Integer>> re = restTemplate.exchange(
-                seat_service_url + "/api/v1/seatservice/seats/left_tickets",
-                HttpMethod.POST,
-                requestEntity,
-                new ParameterizedTypeReference<Response<Integer>>() {
-                });
-        TravelServiceImpl.LOGGER.info("[getRestTicketNumber][Get Rest tickets num][num is: {}]", re.getBody().toString());
-
-        return re.getBody().getData();
+//        ResponseEntity<Response<Integer>> re = restTemplate.exchange(
+//                seat_service_url + "/api/v1/seatservice/seats/left_tickets",
+//                HttpMethod.POST,
+//                requestEntity,
+//                new ParameterizedTypeReference<Response<Integer>>() {
+//                });
+//        TravelServiceImpl.LOGGER.info("[getRestTicketNumber][Get Rest tickets num][num is: {}]", re.getBody().toString());
+        Response<Integer> result = getLeftTicketOfInterval(seatRequest, headers);
+        return result.getData();
     }
 
     @Override
@@ -513,8 +513,8 @@ public class TravelServiceImpl implements TravelService {
         }
     }
 
-    @Override
-    public Response getLeftTicketOfInterval(Seat seatRequest, HttpHeaders headers) {
+
+    private Response getLeftTicketOfInterval(Seat seatRequest, HttpHeaders headers) {
         int numOfLeftTicket = 0;
         Response<Route> routeResult;
         TrainType trainTypeResult;
