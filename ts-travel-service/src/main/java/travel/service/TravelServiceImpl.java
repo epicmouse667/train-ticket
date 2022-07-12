@@ -178,7 +178,7 @@ public class TravelServiceImpl implements TravelService {
         String endPlaceName = info.getEndPlace();
         String startingPlaceId = queryForStationId(startingPlaceName, headers);
         String endPlaceId = queryForStationId(endPlaceName, headers);
-
+        TravelServiceImpl.LOGGER.info("[QueryForStationId][endPlaceId:{}]",endPlaceId);
         //This is the final result
         List<TripResponse> list = new ArrayList<>();
 
@@ -191,13 +191,16 @@ public class TravelServiceImpl implements TravelService {
             //Trains that meet the above criteria are added to the return list
             if (tempRoute.getStations().contains(startingPlaceId) &&
                     tempRoute.getStations().contains(endPlaceId) &&
-                    tempRoute.getStations().indexOf(startingPlaceId) < tempRoute.getStations().indexOf(endPlaceId)) {
+                    tempRoute.getStations().indexOf(startingPlaceId) > tempRoute.getStations().indexOf(endPlaceId)) {
                 TripResponse response = getTickets(tempTrip, tempRoute, startingPlaceId, endPlaceId, startingPlaceName, endPlaceName, info.getDepartureTime(), headers);
                 if (response == null) {
                     TravelServiceImpl.LOGGER.warn("[query][Query trip error][Tickets not found][start: {},end: {},time: {}]", startingPlaceName, endPlaceName, info.getDepartureTime());
                     return new Response<>(0, "No Trip info content", null);
                 }
                 list.add(response);
+                TravelServiceImpl.LOGGER.info("[test]",response);
+            }else{
+                TravelServiceImpl.LOGGER.warn("[test][wrong route information]");
             }
         }
         return new Response<>(1, success, list);
